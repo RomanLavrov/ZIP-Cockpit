@@ -1,0 +1,381 @@
+//
+$navBackground: rgb(45, 69, 81);
+$navButtonBackground: rgb(79, 12, 117);
+$navButtonBackgroundHover: rgb(132, 13, 201);
+$cardHeader: rgb(49, 94, 100);
+$card-warning:rgb(72, 121, 101);
+$card-header:#483A58;
+$topNavBarHeight:80px;
+
+
+.nav-bar {
+  width: 100%;
+  background: $navBackground;
+  padding: 30 0 30 0;
+  height: $topNavBarHeight;
+  text-align: center;
+  align-items: center;
+}
+
+.nav-button {
+  height: 40px;
+  width: 120px;
+  color: white;
+  background-color: $navButtonBackground;
+  border-radius: 3px;
+  margin-right: 5px;
+}
+
+.nav-button:hover {
+  color: white;
+  text-decoration: none;
+  background: $navButtonBackgroundHover;
+}
+
+.line-thin {
+  margin: 0;
+  padding: 0;
+  border-color: white;
+}
+
+.line-separator {
+  border-left: solid white;
+  border-width: 1px;
+}
+
+//-----Navigation side panel-----
+
+.side-wrap {
+  margin: 0;
+  padding: 0;
+}
+
+.content-wrap {
+  padding: 0;
+  max-height: 100vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.nav-side {
+  height: 100%;
+  width: 200px;
+  padding: 10px;
+  padding-top: 80px;
+  color: white;
+  background: $navBackground;
+  transition: 300ms;
+  line-height: 40px;
+}
+
+.nav-side button {
+  height: 40px;
+  width: 40px;
+  border: 0px;
+  background: $navButtonBackground;
+  border-radius: 5px;
+  background-image: url("/images/toggle.svg");
+  background-size: cover;
+}
+
+.nav-side button:focus {
+  outline: 0;
+}
+
+.nav-side button:hover {
+  color: white;
+  box-shadow: #ccc;
+  background-color: $navButtonBackgroundHover;
+}
+
+.nav-collapsed {
+  width: 80px;
+}
+
+.nav-separator {
+  border-color: white;
+}
+
+#nav-dashboard {
+  background-image: url("../images/dashboard.svg");
+  background-image: url {{asset('/images/dashboard.svg')}});
+
+  background-size: cover;
+}
+
+#nav-location {
+  background-image: url("../images/location.svg");
+  background-size: cover;
+}
+
+#nav-viewer {
+  background-image: url("../images/viewer.svg");
+  background-size: cover;
+}
+
+//----------Dashboard cards---------------
+
+.card-wrap {
+  margin: 10px;
+  //background:dodgerblue;
+  //border-bottom-left-radius: 20px;
+  //border-bottom-right-radius: 20px;
+  margin-top: 20px;
+  width: 100%;
+  box-shadow: 0px 3px 11px 0px rgba(0, 0, 0, 0.75);
+  padding: 0 !important;
+  border-radius: 10px;
+}
+
+.card-header {
+  color: white;
+  height: 80px;
+  padding: 0 20;
+  line-height: 40px;
+  background: $card-header;
+  border-top-left-radius: 10px !important;
+  border-top-right-radius: 10px !important;
+  align-items: center;
+}
+
+.card-content {
+  height: fit-content;
+  background: white;
+  padding: 20;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+//-------Warning card------
+.card-warning {
+  widows: 100%;
+  color: white;
+  margin: 10;
+  padding: 10px;
+  border-left: 5px dashed rgb(184, 184, 11);
+  background: $card-warning;
+  align-items: center;
+}
+
+.card-icon {
+  height: 80px;
+  width: 90px;
+  background-color: white;
+  background-size: cover;
+  box-shadow: 0px 3px 11px 0px rgba(0, 0, 0, 0.75);
+  margin-bottom: 20px;
+  margin-left: 10px;
+}
+
+#warning-icon {
+  background-color: #744FC6;
+  background-image: url("../public/images/warning.svg");
+  background-position: center;
+}
+
+#warning-collapse,
+#presence-collapse,
+#climat-collapse {
+  height: 40px;
+  width: 40px;
+  background-image: url("../public/images/drop.svg");
+  background-size: cover;
+  transition: 300ms;
+}
+
+#warning-collapse:hover,
+#presence-collapse:hover,
+#climat-collapse:hover {
+  transform: translate(0px, 5px);
+}
+
+//-------Presence-card-------
+#presence-icon {
+
+  background-color: rgb(133, 32, 54);
+  background-image: url("../public/images/presence.svg");
+  background-size: cover;
+}
+
+#climat-icon {
+  background-color: rgb(61, 136, 197);
+  background-image: url("../public/images/climat.svg");
+  background-position: center;
+  background-size: cover;
+
+}
+
+#forgeDiv {
+  position: relative;
+
+  background-image: url('../public/images/loader.gif');
+  background-position: center;
+  background-size: auto;
+  background-repeat: no-repeat;
+
+  margin-top: $topNavBarHeight;
+
+  height: -moz-calc(100% - #{$topNavBarHeight});
+  height: -webkit-calc(100% - #{$topNavBarHeight});
+  height: calc(100% - #{$topNavBarHeight});
+}
+
+/*Custom Forge Toolbar*/
+
+#divToolbar {
+  position: absolute;
+  height: 240px;
+  width: 50px;
+  top: 0px;
+  left: 0px;
+}
+
+.toolbar-button {
+  background-size: 40px;
+  background-repeat: no-repeat;
+  object-fit: cover;
+}
+
+#Detector {
+  background-image: url("../public/images/toolbar/detectors.svg");
+}
+
+#Detector:hover {
+  background-image: url("../public/images/toolbar/detectors-hover.svg");
+}
+
+#Occupancy {
+  background-image: url("../public/images/toolbar/presence.svg");
+}
+
+#Views{background-image: url("../public/images/toolbar/views.svg");
+}
+
+#Views:hover{
+  background-image: url("../public/images/toolbar/views-hover.svg");
+}
+
+#Occupancy:hover {
+  background-image: url("../public/images/toolbar/presence-hover.svg");
+}
+
+#detectorsPanel {
+  width: fit-content;
+  height: fit-content;
+  min-width: 240px;
+  top:50px!important;
+  left: 80px!important;
+}
+
+#detectorsTable, 
+#viewsTable, 
+#occupancyTable {
+  height: fit-content;
+  width: 100%;  
+  padding: 10px;
+
+}
+
+::-webkit-scrollbar{
+  width:1px;
+}
+
+#detectorsTable thead,
+#viewsTable thead, 
+#occupancyTable thead
+{  
+  color: white;
+  background:$navBackground;
+}
+#detectorsTable tr, 
+#viewsTable tr, 
+#occupancyTable tr
+{
+  color:#bbb;
+  background:$navBackground;
+}
+
+#detectorsTable tr:hover,
+#viewsTable tr:hover, 
+#occupancyTable tr:hover
+{
+  color:white;
+  background: $navButtonBackgroundHover;
+}
+
+#label { 
+  color:white;
+  display:none; 
+  position:fixed; 
+  z-index:2; 
+  background-color:rgba(34, 34, 34, 0.9);
+  border-radius: 5px; 
+  padding: 10px;
+}
+#label img { width:200px;}
+
+
+/*
+.toolbar-button-Mark {
+  margin-top: 40px;
+  background-image: url("../images/label.png");
+  background-size: 40px;
+  background-repeat: no-repeat;
+  object-fit: cover;
+}
+
+.toolbar-button-Meter {
+  margin-top: 40px;
+  background-image: url("../images/meter.png");
+  background-size: 40px;
+  background-repeat: no-repeat;
+  object-fit: cover;
+}
+
+.toolbar-button-Attributes {
+  margin-top: 40px;
+  background-image: url("../public/images/attributes.png");
+  background-size: 40px;
+  background-repeat: no-repeat;
+  object-fit: cover;
+}
+
+.toolbar-button-Chart {
+  margin-top: 40px;
+  background-image: url("../images/chart.png");
+  background-size: 40px;
+  background-repeat: no-repeat;
+  object-fit: cover;
+}
+
+.toolbar-button-Map {
+  margin-top: 40px;
+  background-image: url("../images/map.png");
+  background-size: 40px;
+  background-repeat: no-repeat;
+  object-fit: cover;
+}
+
+.toolbar-button-Isolate {
+  margin-top: 40px;
+  background-image: url("../images/building.png");
+  background-size: 40px;
+  background-repeat: no-repeat;
+  object-fit: cover;
+}
+
+.toolbar-button-Views {
+  margin-top: 40px;
+  background-image: url("../images/view.png");
+  background-size: 40px;
+  background-repeat: no-repeat;
+  object-fit: cover;
+}
+
+.toolbar-vertical-group {
+  margin: 20%;
+  width: 50px;
+  height: auto;
+}
+
+*/
