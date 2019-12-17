@@ -19853,7 +19853,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ShowSensors", function() { return ShowSensors; });
 console.log('Sensors script loaded');
 var detectors = [];
-var detectorNameToSearch = 'E_GAU';
+var detectorNameToSearch = 'E_UKV';
 
 function ShowSensors() {
   console.log("Show Sensors");
@@ -20590,6 +20590,79 @@ $(document).ready(function () {
 
 /***/ }),
 
+/***/ "./resources/js/googleCharts.js":
+/*!**************************************!*\
+  !*** ./resources/js/googleCharts.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+
+console.log("Google Charts Loaded");
+$(document).ready(function () {
+  var temperatureDiv = document.getElementById("temperatureGraph");
+  var humidityDiv = document.getElementById('humidityGraph');
+  var rawSensorsData = JSON.parse(document.getElementById('Climat').dataset.climat);
+  var sensorsData = [];
+  var sensors = Object.keys(rawSensorsData);
+  sensors.forEach(function (sensor) {
+    var Sensor = new Object();
+    Sensor.Location = sensor;
+    Sensor.Temperature = rawSensorsData[sensor].temperature;
+    Sensor.Humidity = rawSensorsData[sensor].humidity;
+    Sensor.Occupancy = rawSensorsData[sensor].occupancy;
+    sensorsData.push(Sensor);
+  });
+  google.charts.load("current", {
+    packages: ["corechart"]
+  });
+  google.charts.setOnLoadCallback(drawTemperatureChart);
+  google.charts.setOnLoadCallback(drawHumidityChart);
+
+  function getRandColor() {
+    var colorArray = ['#3E91E2', '#508EDD', '#668AD7', '#7E85D0', '#8483CD', '#9281C9', '#A07EC5', '#A67CC2', '#C477BA', '#E76FAE'];
+    return colorArray[Math.round(Math.random() * 10)];
+  }
+
+  var options = {
+    legend: {
+      position: 'none',
+      fontName: 'Arial'
+    }
+  };
+
+  function drawTemperatureChart() {
+    var temperatureDataArray = [];
+    var header = ['Raum', 'Temperature', {
+      role: "style"
+    }];
+    temperatureDataArray.push(header);
+    sensorsData.forEach(function (element) {
+      temperatureDataArray.push([element.Location, element.Temperature, getRandColor()]);
+    });
+    var data = google.visualization.arrayToDataTable(temperatureDataArray);
+    var chart = new google.visualization.ColumnChart(temperatureDiv);
+    chart.draw(data, options);
+  }
+
+  function drawHumidityChart() {
+    var humidityDataArray = [];
+    var header = ['Raum', 'Humidity', {
+      role: "style"
+    }];
+    humidityDataArray.push(header);
+    sensorsData.forEach(function (element) {
+      humidityDataArray.push([element.Location, element.Humidity, getRandColor()]);
+    });
+    var data = google.visualization.arrayToDataTable(humidityDataArray);
+    var chart = new google.visualization.ColumnChart(humidityDiv);
+    chart.draw(data, options);
+  }
+});
+
+/***/ }),
+
 /***/ "./resources/sass/app.scss":
 /*!*********************************!*\
   !*** ./resources/sass/app.scss ***!
@@ -20602,13 +20675,14 @@ $(document).ready(function () {
 /***/ }),
 
 /***/ 0:
-/*!***********************************************************************************************************************************************************************************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/js/forgeApp.js ./resources/js/AttributeExtension.js ./resources/js/MarkupExtension.js ./resources/js/Forge/Detectors.js ./resources/js/Forge/Occupancy.js ./resources/sass/app.scss ***!
-  \***********************************************************************************************************************************************************************************************************************************/
+/*!******************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/js/googleCharts.js ./resources/js/forgeApp.js ./resources/js/AttributeExtension.js ./resources/js/MarkupExtension.js ./resources/js/Forge/Detectors.js ./resources/js/Forge/Occupancy.js ./resources/sass/app.scss ***!
+  \******************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! D:\_WEB Projects\Cockpit_Laravel\laravel\resources\js\app.js */"./resources/js/app.js");
+__webpack_require__(/*! D:\_WEB Projects\Cockpit_Laravel\laravel\resources\js\googleCharts.js */"./resources/js/googleCharts.js");
 __webpack_require__(/*! D:\_WEB Projects\Cockpit_Laravel\laravel\resources\js\forgeApp.js */"./resources/js/forgeApp.js");
 __webpack_require__(/*! D:\_WEB Projects\Cockpit_Laravel\laravel\resources\js\AttributeExtension.js */"./resources/js/AttributeExtension.js");
 __webpack_require__(/*! D:\_WEB Projects\Cockpit_Laravel\laravel\resources\js\MarkupExtension.js */"./resources/js/MarkupExtension.js");

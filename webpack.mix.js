@@ -13,6 +13,7 @@ const mix = require('laravel-mix');
 
 mix.js([
     'resources/js/app.js', 
+    'resources/js/googleCharts.js',
     'resources/js/forgeApp.js', 
     'resources/js/AttributeExtension.js',
     'resources/js/MarkupExtension.js',

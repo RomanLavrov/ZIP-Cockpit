@@ -13,24 +13,25 @@ class Viewer extends Controller
         //$this->getSensorsData();
 
         Autodesk\Auth\Configuration::getDefaultConfiguration()
-            ->setClientId('kMWAAeIB51liNiGKGDSRfXG0HxCFDMsg')
-            ->setClientSecret('Dd2hpi5NjiDexoym');
+            ->setClientId(env('AUTODESK_CLIENT_ID'))
+            ->setClientSecret(env('AUTODESK_CLIENT_SECRET'));
 
         $twoLeggedAuth = new Autodesk\Auth\OAuth2\TwoLeggedAuth();
-        $twoLeggedAuth->setScopes(['data:read', 'data:write','data:create','bucket:read','bucket:create', 'bucket:delete']);
+        $twoLeggedAuth->setScopes(['data:read', 'data:write', 'data:create', 'bucket:read', 'bucket:create', 'bucket:delete']);
 
         $twoLeggedAuth->fetchToken();
         $tokenInfo = [
             'applicationToken' => $twoLeggedAuth->getAccessToken(),
             'expiry'           => time() + $twoLeggedAuth->getExpiresIn(),
         ];
-        return view('viewer', ['tokenInfo'=>$tokenInfo, 'sensorsData'=>$this->getSensorsData()]);
+        return view('viewer', ['tokenInfo' => $tokenInfo, 'sensorsData' => $this->getSensorsData()]);
     }
 
-    function getSensorsData(){
+    function getSensorsData()
+    {
         $request = curl_init();
-        $apiKey = "X-API-KEY: LIXAFFHQ6SVFIJREJGKGFZEUUDJJ4MHFVIERRRNFYBY9VKGJTYYZZHZKXHQUYJQM";
-        $url = "https://innovationspark.cust.prod.thingdust.io/api/v2/get_space_states";
+        $apiKey = "X-API-KEY:" . env('THIGDUST_KEY');
+        $url = env('THIGDUST_URL'); 
 
         $headers = array();
         $headers[] = $apiKey;
@@ -40,8 +41,6 @@ class Viewer extends Controller
         curl_setopt($request, CURLOPT_HTTPHEADER, $headers);
 
         $response = json_decode(curl_exec($request), true);
-
-
 
         return $response;
     }

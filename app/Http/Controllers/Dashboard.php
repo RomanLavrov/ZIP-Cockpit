@@ -86,8 +86,7 @@ class Dashboard extends Controller
         //
     }
 
-    function getSensorsData(){
-        
+    function getSensorsData(){        
         $request = curl_init();
         $apiKey = "X-API-KEY: LIXAFFHQ6SVFIJREJGKGFZEUUDJJ4MHFVIERRRNFYBY9VKGJTYYZZHZKXHQUYJQM";
         $url = "https://innovationspark.cust.prod.thingdust.io/api/v2/get_space_states";
@@ -100,9 +99,9 @@ class Dashboard extends Controller
         curl_setopt($request, CURLOPT_HTTPHEADER, $headers);
 
         $response = curl_exec($request);
-        $requestResponse = json_decode($response, true);
-        $this->insertSensorData($requestResponse);
-        return $requestResponse;
+        //$requestResponse = json_decode($response, true);
+        $this->insertSensorData(json_decode($response, true));
+        return $response;
     }
 
     function insertSensorData($sensorsData){
@@ -116,7 +115,5 @@ class Dashboard extends Controller
             $preparedData = array("RoomName"=>$RoomName, "Occupancy"=>$Occupancy, "Temperature"=>$Temperature, "Humidity"=>$Humidity, "Time"=>$Time);
             DB::table('sensorsData')->insert($preparedData);
         }
-
-
     }
 }

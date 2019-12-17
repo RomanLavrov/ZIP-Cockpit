@@ -9,7 +9,7 @@ $(document).ready(function () {
     var forgeDiv = document.getElementById('forgeDiv');
     window.token = forgeDiv.dataset.token;
     //console.log(token);
-    //window.currentURN = 'dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6YWlvdC9JUFoyLnJ2dA'; //Sensors Drawing
+   //window.currentURN = 'dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6YWlvdC9JUFoyLnJ2dA'; //Sensors Drawing
     window.currentURN = 'dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6YWlvdC9JUFpfSExLU18yMC5ud2Q'; //Rooms Drawing
     //window.currentURN = 'dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6YWlvdC9JUFpfSExLU18yMC5ydnQ'; // Rooms and sensors
 

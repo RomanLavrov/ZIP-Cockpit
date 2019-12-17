@@ -1,7 +1,7 @@
 console.log('Sensors script loaded');
 
 var detectors = [];
-var detectorNameToSearch = 'E_GAU';
+var detectorNameToSearch = 'E_UKV';
 
 function ShowSensors() {
     console.log("Show Sensors");

@@ -192,7 +192,7 @@
 
 #forgeDiv {
   position: relative;
-  background-image: url(/images/loader.gif?22c3ff0764c95d433fd03ac6c7c07f68);
+  background-image: url(/images/loader.gif?d41d8cd98f00b204e9800998ecf8427e);
   background-position: center;
   background-size: auto;
   background-repeat: no-repeat;
@@ -366,4 +366,9 @@
 }
 
 */
+
+#temperatureGraph,
+#humidityGraph {
+  height: 500px;
+}
 
